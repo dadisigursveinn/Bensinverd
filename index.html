@@ -2,40 +2,81 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bensínverð </title>
-    <link rel="stylesheet" href="css/screen.css">
-	<link rel="stylesheet" href="css/cupertino/jquery-ui-1.10.0.custom.css">
+
+    <!-- <link rel="stylesheet" href="css/screen.css"> -->
+	<link rel="stylesheet" href="css/cupertino/jquery-ui-1.10.0.custom.css"> 
+
+	<!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
-<div id="logs">
-    <form id="addLog" action="#">
-        <div>
-        	<label for="station">Stöð: </label>
-        	<select name="station">
-        		<option value="atlantsolia">Atlantsolía</option>
-        		<option value="n1">N1</option>
-        		<option value="orkan">Orkan</option>
-        		<option value="olis">Olís</option>
-        		<option value="ob">ÓB</option>
-        		<option value="shell">Shell1</option>
-        	</select>
-            <label for="liters">Lítrar: </label><input id="liters" type="text" />
-            <label for="date">Dagsetning: </label><input id="date" type="text" />
-            <button id="add">Skrá</button>
-        </div>
-    </form>
+<div class="container">
+	<br>
+	<button type="button" class="btn btn-primary pull-right">Skrá inn</button>
+	<div class="page-header">
+	  <h1><span class="glyphicon glyphicon-tint"></span>Bensínverð.is <small>hvar átt þú að dæla?</small></h1>
+	</div>
+	<div class="jumbotron">
+		<ul class="list-group">
+		  <li class="list-group-item">
+		    <span class="badge">215.50 kr/l</span>
+		    Atlantsolía
+		  </li>
+		  <li class="list-group-item">
+		    <span class="badge">215.90 kr/l</span>
+		    N1
+		  </li>
+		  <li class="list-group-item">
+		    <span class="badge">215.40 kr/l</span>
+		    Orkan
+		  </li>
+		  <li class="list-group-item">
+		    <span class="badge">215.90 kr/l</span>
+		    Olís
+		  </li>
+		  <li class="list-group-item">
+		    <span class="badge">215.50 kr/l</span>
+		    ÓB
+		  </li>
+		  <li class="list-group-item">
+		    <span class="badge">216.60 kr/l</span>
+		    Shell
+		  </li>
+		</ul>
+		<div id="logs">			
+		    <form id="addLog" action="#">
+		        <div class="form-group"> 
+		        	<label for="station"><span class="glyphicon glyphicon-scale"></span>Stöð: </label>
+		        	<select name="station" class="form-control">
+		        		<option value="atlantsolia">Atlantsolía</option>
+		        		<option value="n1">N1</option>
+		        		<option value="orkan">Orkan</option>
+		        		<option value="olis">Olís</option>
+		        		<option value="ob">ÓB</option>
+		        		<option value="shell">Shell1</option>
+		        	</select>
+		            <label for="liters"><span class="glyphicon glyphicon-dashboard"></span>Lítrar: </label><input id="liters" type="text" class="form-control" />
+		            <label for="date"><span class="glyphicon glyphicon-calendar"></span>Dagsetning: </label><input id="date" type="text" class="form-control" />
+		        </div>
+		        <button id="add" type="button" class="btn btn-default">Skrá</button>
+		    </form>
+		</div>
+	</div>
+
+	<script id="logTemplate" type="text/template">
+		<ul>
+			<li><%= station %></li>
+			<li><%= liters %></li>
+			<li><%= date %></li>
+		</ul>
+
+		<button class="delete">Eyða</button>
+	</script>
 </div>
-
-<script id="logTemplate" type="text/template">
-	<ul>
-		<li><%= station %></li>
-		<li><%= liters %></li>
-		<li><%= date %></li>
-	</ul>
-
-	<button class="delete">Eyða</button>
-</script>
-
 <script src="js/lib/jquery-1.9.0.js"></script>
 <script src="js/lib/jquery-ui-1.10.0.custom.js"></script>
 <script src="js/lib/jquery-dateFormat-1.0.js"></script>
@@ -50,5 +91,7 @@
 <!-- script src="js/views/library.js"></script -->
 <script src="js/views/loglib.js"></script>
 <script src="js/app.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
