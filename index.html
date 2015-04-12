@@ -1,11 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Beta Bensínverð</title>
+    <meta charset="UTF-8"/>
+    <title>Bensínverð </title>
+    <link rel="stylesheet" href="css/screen.css">
+	<link rel="stylesheet" href="css/cupertino/jquery-ui-1.10.0.custom.css">
 </head>
-<body>	
-<h1>
-	Success! Bensínverð up and running!
-</h1>
+<body>
+<div id="logs">
+    <form id="addLog" action="#">
+        <div>
+        	<label for="station">Stöð: </label>
+        	<select name="station">
+        		<option value="atlantsolia">Atlantsolía</option>
+        		<option value="n1">N1</option>
+        		<option value="orkan">Orkan</option>
+        		<option value="olis">Olís</option>
+        		<option value="ob">ÓB</option>
+        		<option value="shell">Shell1</option>
+        	</select>
+            <label for="liters">Lítrar: </label><input id="liters" type="text" />
+            <label for="date">Dagsetning: </label><input id="date" type="text" />
+            <button id="add">Skrá</button>
+        </div>
+    </form>
+</div>
+
+<script id="logTemplate" type="text/template">
+	<ul>
+		<li><%= station %></li>
+		<li><%= liters %></li>
+		<li><%= date %></li>
+	</ul>
+
+	<button class="delete">Eyða</button>
+</script>
+
+<script src="js/lib/jquery-1.9.0.js"></script>
+<script src="js/lib/jquery-ui-1.10.0.custom.js"></script>
+<script src="js/lib/jquery-dateFormat-1.0.js"></script>
+<script src="js/lib/underscore.js"></script>
+<script src="js/lib/backbone.js"></script>
+<!-- script src="js/models/book.js"></script -->
+<script src="js/models/log.js"></script>
+<!-- script src="js/collections/library.js"></script -->
+<script src="js/collections/loglib.js"></script>
+<!-- script src="js/views/book.js"></script -->
+<script src="js/views/log.js"></script>
+<!-- script src="js/views/library.js"></script -->
+<script src="js/views/loglib.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>

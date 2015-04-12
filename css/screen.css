@@ -1,0 +1,60 @@
+body {
+	background-color: #eee;
+}
+
+.logContainer {
+	outline: 1px solid #aaa;
+	width: 350px;
+	height: 130px;
+	background-color: #fff;
+	float: left;
+	margin: 5px;
+}
+
+.logContainer ul {
+    list-style-type: none;
+    margin-bottom: 0;
+}
+
+.logContainer button {
+    float: right;
+    margin: 10px;
+}
+
+#addLog label {
+	width: 100px;
+	margin-right: 10px;
+	text-align: right;
+	line-height: 25px;
+}
+
+#addLog label, #addLog input, #addLog select {
+	display: block;
+	margin-bottom: 10px;
+	float: left;
+}
+
+#addLog label[for="title"], #addLog label[for="date"] {
+	clear: both;
+}
+
+#addLog button {
+	display: block;
+	margin: 5px 20px 10px 10px;
+	float: right;
+	clear: both;
+}
+
+#addLog div {
+	width: 550px;
+}
+
+#addLog div:after {
+	content: "";
+	display: block;
+	height: 0;
+	visibility: hidden;
+	clear: both;
+	font-size: 0;
+	line-height: 0;
+}
