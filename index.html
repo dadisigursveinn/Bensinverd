@@ -14,10 +14,10 @@
     <link rel="stylesheet" href="css/custom.css">
 
     <!-- Include the AngularJS library -->
-    <script src="js/lib/angular.min.js"></script>
+    <script src="js/shared/angular.min.js"></script>
 
 </head>
-<body>
+<body ng-app="GasPriceApp">
 <div class="main" ng-controller="MainController">
 	<div class="container">
 		<br>
@@ -26,15 +26,15 @@
 		  <h1><span class="glyphicon glyphicon-tint"></span>Bensínverð.is <small>hvar átt þú að dæla?</small></h1>
 		</div>
 		<div class="jumbotron">
-			<div class="bensinverd" ng-repeat="station in stations.results">
-				<ul class="list-group">
+			<ul class="list-group">
+				<div class="bensinverd" ng-repeat="station in stations.results">
 					<li class="list-group-item">
-			    		<span class="badge">{{ station.flag_value }}</span>
-			    		<span class="badge">{{ station.st_value }}</span>
-			    		<span class="badge">{{ station.ver_number }}</span>
-			  		</li>
-			 	</ul>
-			</div>
+						<span class="badge">{{ station.ver_number/_source }}</span>
+						<h5>{{ station.flag_value }}</h5>
+						<h4>{{ station.st_value }}</h4>
+				    </li>
+				</div>
+			</ul>
 			<ul class="list-group">
 			  <li class="list-group-item">
 			    <span class="badge">215.50 kr/l</span>
@@ -83,11 +83,11 @@
 
 	</div>
 </div>
-<script src="js/lib/jquery-1.11.2.js"></script>
-<script src="js/lib/jquery-ui-1.10.0.custom.js"></script>
-<script src="js/lib/jquery-dateFormat-1.0.js"></script>
+<script src="js/shared/jquery-1.11.2.js"></script>
+<script src="js/shared/jquery-ui-1.10.0.custom.js"></script>
+<script src="js/shared/jquery-dateFormat-1.0.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/lib/bootstrap.min.js"></script>
+<script src="js/shared/bootstrap.min.js"></script>
 
 <!-- Modules -->
 <script src="js/app.js"></script>

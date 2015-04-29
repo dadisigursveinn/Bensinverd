@@ -1,5 +1,7 @@
+console.log("Hellopello");
 app.controller('MainController', ['$scope', 'gasPrice', function($scope, gasPrice) { 
-  gasPrice.success(function(data) { 
-    $scope.stations = data; 
-  });
+	console.log('Hello');
+	gasPrice.success(function(data) { 
+	    $scope.stations = data; 
+	});
 }]);
