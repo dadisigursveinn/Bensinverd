@@ -17,50 +17,37 @@
     <script src="js/shared/angular.min.js"></script>
 
 </head>
-<body ng-app="GasPriceApp">
-<div class="main" ng-controller="MainController">
+<body ng-app="GasPriceApp"><!-- Segir að ég sé að nota GasPriceApp hérna -->
+<div class="main" ng-controller="MainController"><!-- Nota MainController-inn í þessu div -->
 	<div class="container">
+
+		<!-- Login. Virkni gæti komið seinna 
 		<br>
-		<button type="button" class="btn btn-primary pull-right">Skrá inn</button>
+		<button type="button" class="btn btn-primary pull-right">Skrá inn</button> -->
+
+
+		<!-- Header -->
 		<div class="page-header">
 		  <h1><span class="glyphicon glyphicon-tint"></span>Bensínverð.is <small>hvar átt þú að dæla?</small></h1>
 		</div>
+
+		<!-- Hérna geri ég að loopa í gegnum stations.results sem að er api 
+			 prentar út nafn bensínstöðvar, bensínfélag og bensínverð -->
 		<div class="jumbotron">
 			<ul class="list-group">
+				<!-- ng-repeat="station in stations.results" er til þess að loopa í gegnum stations.results -->
 				<div class="bensinverd" ng-repeat="station in stations.results">
+					<!-- og setur upplýsingarnar inní li -->
 					<li class="list-group-item">
-						<span class="badge">{{ station.ver_number/_source }}</span>
+						<span class="badge">{{ station.ver_number }} kr.</span>
 						<h5>{{ station.flag_value }}</h5>
 						<h4>{{ station.st_value }}</h4>
 				    </li>
 				</div>
 			</ul>
-			<ul class="list-group">
-			  <li class="list-group-item">
-			    <span class="badge">215.50 kr/l</span>
-			    Atlantsolía
-			  </li>
-			  <li class="list-group-item">
-			    <span class="badge">215.90 kr/l</span>
-			    N1
-			  </li>
-			  <li class="list-group-item">
-			    <span class="badge">215.40 kr/l</span>
-			    Orkan
-			  </li>
-			  <li class="list-group-item">
-			    <span class="badge">215.90 kr/l</span>
-			    Olís
-			  </li>
-			  <li class="list-group-item">
-			    <span class="badge">215.50 kr/l</span>
-			    ÓB
-			  </li>
-			  <li class="list-group-item">
-			    <span class="badge">216.60 kr/l</span>
-			    Shell
-			  </li>
-			</ul>
+		</div>
+
+		<!-- Skráningar form nýrra dælinga --> 
 			<div id="logs">			
 			    <form id="addLog" action="#">
 			        <div class="form-group"> 
@@ -79,10 +66,12 @@
 			        <button id="add" type="button" class="btn btn-default">Skrá</button>
 			    </form>
 			</div>
-		</div>
+
 
 	</div>
 </div>
+
+<!-- JavaScript -->
 <script src="js/shared/jquery-1.11.2.js"></script>
 <script src="js/shared/jquery-ui-1.10.0.custom.js"></script>
 <script src="js/shared/jquery-dateFormat-1.0.js"></script>
