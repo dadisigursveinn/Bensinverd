@@ -1,1 +1,2 @@
-var app = angular.module('GasPriceApp', []); //Gerir app-ið GasPriceApp
+var app = angular.module('GasPriceApp', []); 
+//Gerir app-ið GasPriceApp 
