@@ -50,15 +50,15 @@
 			        	<label for="station"><span class="glyphicon glyphicon-scale"></span>Stöð: </label>
 			        	<select name="station" class="form-control" ng-model="stationInput">
 			        		
-			        		<!--<option ng-repeat="station in stations.results" value="{{ station.flag_value }}">{{ station.flag_value }}</option>-->
-			        		<!---->
+			        		<option ng-repeat="station in stations.results" value="{{ station.flag_value }}" selected="selected">{{ station.flag_value }}</option>
+			        		<!--
 			        		<option value="Atlantsólía">Atlantsólía</option>
 			        		<option value="N1">N1</option>
 			        		<option value="Orkan">Orkan</option>
 			        		<option value="Olís">Olís</option>
 			        		<option value="ÓB">ÓB</option>
 			        		<option value="Shell">Shell</option>
-			        		<!---->
+			        		-->
 			        	</select>
 			            
 			            <label for="liters"><span class="glyphicon glyphicon-dashboard"></span>Lítrar: </label>
