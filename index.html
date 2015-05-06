@@ -47,10 +47,10 @@
 			    <form ng-submit="addPost()">
 			        <div class="form-group"> 
 			        	
-			        	<label for="station"><span class="glyphicon glyphicon-scale"></span>Stöð: </label>
+			        	<label for="station"><span class="glyphicon glyphicon-scale"></span> Stöð: </label>
 			        	<select name="station" class="form-control" ng-model="stationInput">
 			        		
-			        		<option ng-repeat="station in stations.results" value="{{ station.flag_value }}" selected="selected">{{ station.flag_value }}</option>
+			        		<option ng-repeat="station in stations.results" value="{{ station.flag_value }}">{{ station.flag_value }} - {{ station.ver_number }} kr/l</option>
 			        		<!--
 			        		<option value="Atlantsólía">Atlantsólía</option>
 			        		<option value="N1">N1</option>
@@ -61,11 +61,11 @@
 			        		-->
 			        	</select>
 			            
-			            <label for="liters"><span class="glyphicon glyphicon-dashboard"></span>Lítrar: </label>
+			            <label for="liters"><span class="glyphicon glyphicon-dashboard"></span> Lítrar: </label>
 			            <input id="liters" type="text" class="form-control" ng-model="litersInput"/>
 			            
-			            <label for="date"><span class="glyphicon glyphicon-calendar"></span>Dagsetning: </label>
-			            <input id="date" type="text" class="form-control" ng-model="dateInput"/>
+			            <label for="note"><span class="glyphicon glyphicon-pencil"></span> Athugasemd: </label>
+			            <input id="note" type="text" class="form-control" ng-model="noteInput"/>
 			        
 			        </div>
 			        <button type="submit" class="btn btn-default">Skrá</button>
@@ -76,14 +76,31 @@
 			<!-- Hérna á listo yfir dælingar að koma -->
 			<div class="jumbotron">
 				<h3>Fyrri dælingar</h3>
-				<ul class="list-group" ng-repeat="post in posts" item="item">
+				<ul class="list-group" ng-repeat="post in posts | orderBy:'-id'" item="item">
 
 					<li class="list-group-item" ng-if="post.liters != null">
 					<!--Ef að það eru engir lítrar á postum við ekki -->
-						<h4>{{post.liters}} Lítrar</h4>	
-						<h5><span class="glyphicon glyphicon-calendar"></span>{{post.date}}</h5>
-						<h5><span class="glyphicon glyphicon-scale"></span>{{post.station}}</h5>
-						<button ng-click="deletePost($index, post)" class="btn btn-danger">Eyða</button>
+						<h4>
+							{{post.liters}} Lítrar{{post.id}}
+						</h4>	
+						<h5>
+							<span class="glyphicon glyphicon-scale"></span> {{post.station}}
+						</h5>
+						<h5>
+							<span class="glyphicon glyphicon-pencil"></span> {{post.note}}
+						</h5><!-- displayar bara athigasemd ef að hún er -->
+						
+						<h5>
+							<span class="glyphicon glyphicon-calendar"></span> {{post.date}}
+						</h5>
+
+						<h5>
+							<span class="glyphicon glyphicon-piggy-bank"></span> {{post.price | number}} kr.
+						</h5>
+
+
+						<!-- Náði ekki að láta þetta virka
+						<button ng-show="$index==1" ng-click="deletePost($index, post)" class="btn btn-danger">Eyða</button>-->
 					</li>
 					
 				</ul>
