@@ -120,3 +120,10 @@ sudo a2ensite bensinverd2.tk.conf
 sudo service apache2 restart
 
 npm install -g express-generator
+
+express --ejs GasPriceApp
+cd GasPriceApp
+
+npm start
+
+mongod &

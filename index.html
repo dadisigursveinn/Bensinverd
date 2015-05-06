@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<!--
+		Sérstakar þakkir fyrir swole tutorials
+		http://codepen.io/pibby/pen/DLtaK/?editors=101
+		http://www.codecademy.com/learn
+		http://jsfiddle.net/w7cyhnzf/11/
+		https://teamtreehouse.com/forum/local-storage-with-angularjs
+	-->
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,11 +18,11 @@
 
 	<!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="css/custom.css">
 
     <!-- Include the AngularJS library -->
     <script src="js/shared/angular.min.js"></script>
-
 
 
 </head>
@@ -33,11 +40,54 @@
 			<h1><span class="glyphicon glyphicon-tint"></span>Bensínverð.is <small>hvar átt þú að dæla?</small></h1>
 		</div>
 
+
+		<!-- Skráningar form nýrra dælinga --> 
+			<div id="logs">			
+			    <form ng-submit="addPost()">
+			        <div class="form-group"> 
+			        	
+			        	<label for="station"><span class="glyphicon glyphicon-scale"></span>Stöð: </label>
+			        	<select name="station" class="form-control" ng-model="stationInput">
+			        		<option value="Atlantsolía">Atlantsolía</option>
+			        		<option value="N1">N1</option>
+			        		<option value="Orkan">Orkan</option>
+			        		<option value="Olís">Olís</option>
+			        		<option value="ÓB">ÓB</option>
+			        		<option value="Shell">Shell</option>
+			        	</select>
+			            
+			            <label for="liters"><span class="glyphicon glyphicon-dashboard"></span>Lítrar: </label>
+			            <input id="liters" type="text" class="form-control" ng-model="litersInput"/>
+			            
+			            <label for="date"><span class="glyphicon glyphicon-calendar"></span>Dagsetning: </label>
+			            <input id="date" type="text" class="form-control" ng-model="dateInput"/>
+			        
+			        </div>
+			        <button type="submit" class="btn btn-default">Skrá</button>
+			    </form>
+			</div>
+			<br>
+
+			<!-- Hérna á listo yfir dælingar að koma -->
+			<div class="jumbotron">
+				<h3>Fyrri dælingar</h3>
+				<ul class="list-group" ng-repeat="post in posts" item="item">
+					<li class="list-group-item" >
+						<h4>{{post.liters}} Lítrar</h4>	
+						<h5><span class="glyphicon glyphicon-calendar"></span>{{post.date}}</h5>
+						<h5><span class="glyphicon glyphicon-scale"></span>{{post.station}}</h5>
+						<button ng-click="deletePost($index, post)" class="btn btn-danger">Eyða</button>
+					</li>
+					
+				</ul>
+			</div>
+
 		<!-- Hérna geri ég að loopa í gegnum stations.results sem að er api 
 			 prentar út nafn bensínstöðvar, bensínfélag og bensínverð -->
 		<div class="jumbotron">
 			<ul class="list-group">
 				<!-- ng-repeat="station in stations.results" er til þess að loopa í gegnum stations.results -->
+
 				<div class="bensinverd" ng-repeat="station in stations.results">
 					<!-- og setur upplýsingarnar inní li -->
 					<li class="list-group-item">
@@ -49,30 +99,14 @@
 			</ul>
 		</div>
 
-		<!-- Skráningar form nýrra dælinga --> 
-			<div id="logs">			
-			    <form ng-submit="addPost()">
-			        <div class="form-group"> 
-			        	<label for="station"><span class="glyphicon glyphicon-scale"></span>Stöð: </label>
-			        	<select name="station" class="form-control" ng-model="stationInput">
-			        		<option value="atlantsolia">Atlantsolía</option>
-			        		<option value="n1">N1</option>
-			        		<option value="orkan">Orkan</option>
-			        		<option value="olis">Olís</option>
-			        		<option value="ob">ÓB</option>
-			        		<option value="shell">Shell</option>
-			        	</select>
-			            <label for="liters"><span class="glyphicon glyphicon-dashboard"></span>Lítrar: </label><input id="liters" type="text" class="form-control" ng-model="litersInput"/>
-			            <label for="date"><span class="glyphicon glyphicon-calendar"></span>Dagsetning: </label><input id="date" type="text" class="form-control" ng-model="dateInput"/>
-			        </div>
-			        <button type="submit" class="btn btn-default">Skrá</button>
-			    </form>
-			</div>
+		<nav class="navbar navbar-default navbar-fixed-bottom">
+		  <div class="container">
+		    <p><span class="glyphicon glyphicon-copyright-mark"></span>Daði Sigursveinn Harðarson</p>
+		  </div>
+		</nav>
 
-			<!-- Hérna á listo yfir dælingar að koma -->
-			<div ng-repeat="post in posts | orderBy: '-upvotes'">
-				{{post.station}} - {{post.liters}} - {{post.date}}
-			</div>
+
+			
 
 
 	</div>
@@ -80,10 +114,11 @@
 
 <!-- JavaScript -->
 <script src="js/shared/jquery-1.11.2.js"></script>
-<script src="js/shared/jquery-ui-1.10.0.custom.js"></script>
-<script src="js/shared/jquery-dateFormat-1.0.js"></script>
+<script src="js/shared/jquery-ui.js"></script>
+
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/shared/bootstrap.min.js"></script>
+
 
 <!-- Modules -->
 <script src="js/app.js"></script>
@@ -98,6 +133,5 @@
 
 <!-- Templates -->
 
-</script>
 </body>
 </html>

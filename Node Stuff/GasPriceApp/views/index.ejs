@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bensínverð </title>
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- Include the AngularJS library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+
+
+
+</head>
+<body ng-app="GasPriceApp"><!-- Segir að ég sé að nota GasPriceApp hérna -->
+<div class="main" ng-controller="MainController"><!-- Nota MainController-inn í þessu div -->
+	<div class="container">
+
+		<!-- Login. Virkni gæti komið seinna 
+		<br>
+		<button type="button" class="btn btn-primary pull-right">Skrá inn</button> -->
+
+
+		<!-- Header -->
+		<div class="page-header">
+			<h1><span class="glyphicon glyphicon-tint"></span>Bensínverð.is <small>hvar átt þú að dæla?</small></h1>
+		</div>
+
+		<!-- Hérna geri ég að loopa í gegnum stations.results sem að er api 
+			 prentar út nafn bensínstöðvar, bensínfélag og bensínverð -->
+		<div class="jumbotron">
+			<ul class="list-group">
+				<!-- ng-repeat="station in stations.results" er til þess að loopa í gegnum stations.results -->
+				<div class="bensinverd" ng-repeat="station in stations.results">
+					<!-- og setur upplýsingarnar inní li -->
+					<li class="list-group-item">
+						<span class="badge">{{ station.ver_number }} kr.</span>
+						<h5>{{ station.flag_value }}</h5>
+						<h4>{{ station.st_value }}</h4>
+				    </li>
+				</div>
+			</ul>
+		</div>
+
+		<!-- Skráningar form nýrra dælinga --> 
+			<div id="logs">			
+			    <form ng-submit="addPost()">
+			        <div class="form-group"> 
+			        	<label for="station"><span class="glyphicon glyphicon-scale"></span>Stöð: </label>
+			        	<select name="station" class="form-control" ng-model="stationInput">
+			        		<option value="atlantsolia">Atlantsolía</option>
+			        		<option value="n1">N1</option>
+			        		<option value="orkan">Orkan</option>
+			        		<option value="olis">Olís</option>
+			        		<option value="ob">ÓB</option>
+			        		<option value="shell">Shell</option>
+			        	</select>
+			            <label for="liters"><span class="glyphicon glyphicon-dashboard"></span>Lítrar: </label><input id="liters" type="text" class="form-control" ng-model="litersInput"/>
+			            <label for="date"><span class="glyphicon glyphicon-calendar"></span>Dagsetning: </label><input id="date" type="text" class="form-control" ng-model="dateInput"/>
+			        </div>
+			        <button type="submit" class="btn btn-default">Skrá</button>
+			    </form>
+			</div>
+
+			<!-- Hérna á listo yfir dælingar að koma -->
+			<div ng-repeat="post in posts | orderBy: '-upvotes'">
+				{{post.station}} - {{post.liters}} - {{post.date}}
+			</div>
+
+
+	</div>
+</div>
+
+
+
+<!-- Modules -->
+<script src="/javascripts/angularApp.js"></script>
+
+<!-- Directives -->
+
+<!-- Templates -->
+
+</script>
+</body>
+</html>
