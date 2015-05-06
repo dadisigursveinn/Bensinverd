@@ -42,18 +42,23 @@
 
 
 		<!-- Skráningar form nýrra dælinga --> 
-			<div id="logs">			
+			<div id="logs">		
+			<h3>Skrá dælingu</h3>	
 			    <form ng-submit="addPost()">
 			        <div class="form-group"> 
 			        	
 			        	<label for="station"><span class="glyphicon glyphicon-scale"></span>Stöð: </label>
 			        	<select name="station" class="form-control" ng-model="stationInput">
-			        		<option value="Atlantsolía">Atlantsolía</option>
+			        		
+			        		<!--<option ng-repeat="station in stations.results" value="{{ station.flag_value }}">{{ station.flag_value }}</option>-->
+			        		<!---->
+			        		<option value="Atlantsólía">Atlantsólía</option>
 			        		<option value="N1">N1</option>
 			        		<option value="Orkan">Orkan</option>
 			        		<option value="Olís">Olís</option>
 			        		<option value="ÓB">ÓB</option>
 			        		<option value="Shell">Shell</option>
+			        		<!---->
 			        	</select>
 			            
 			            <label for="liters"><span class="glyphicon glyphicon-dashboard"></span>Lítrar: </label>
@@ -72,7 +77,9 @@
 			<div class="jumbotron">
 				<h3>Fyrri dælingar</h3>
 				<ul class="list-group" ng-repeat="post in posts" item="item">
-					<li class="list-group-item" >
+
+					<li class="list-group-item" ng-if="post.liters != null">
+					<!--Ef að það eru engir lítrar á postum við ekki -->
 						<h4>{{post.liters}} Lítrar</h4>	
 						<h5><span class="glyphicon glyphicon-calendar"></span>{{post.date}}</h5>
 						<h5><span class="glyphicon glyphicon-scale"></span>{{post.station}}</h5>
@@ -85,6 +92,7 @@
 		<!-- Hérna geri ég að loopa í gegnum stations.results sem að er api 
 			 prentar út nafn bensínstöðvar, bensínfélag og bensínverð -->
 		<div class="jumbotron">
+			<h3>Bensínverð</h3>
 			<ul class="list-group">
 				<!-- ng-repeat="station in stations.results" er til þess að loopa í gegnum stations.results -->
 
@@ -92,18 +100,21 @@
 					<!-- og setur upplýsingarnar inní li -->
 					<li class="list-group-item">
 						<span class="badge">{{ station.ver_number }} kr.</span>
-						<h5>{{ station.flag_value }}</h5>
-						<h4>{{ station.st_value }}</h4>
+						<h4>{{ station.flag_value }}</h4>
+						<!-- <h4>{{ station.st_value }}</h4> -->
 				    </li>
 				</div>
 			</ul>
 		</div>
 
-		<nav class="navbar navbar-default navbar-fixed-bottom">
-		  <div class="container">
-		    <p><span class="glyphicon glyphicon-copyright-mark"></span>Daði Sigursveinn Harðarson</p>
-		  </div>
-		</nav>
+		<footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4>2015 <span class="glyphicon glyphicon-copyright-mark"></span> Daði Sigursveinn Harðarson</h4>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
 
 
 			
